@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Currency Converter</string>
+    <string-array name="currency_list">
+        <item>RUB</item>
+        <item>USD</item>
+        <item>EUR</item>
+        <item>JPY</item>
+    </string-array>
+    <string name="date_hint">Введите дату</string>
+    <string name="ConversionSymbol">⇄</string>
+    <string name="action_history">История операций</string>
+    <string name="action_clear">Очистить историю</string>
+    <string name="ExchangeRates">Курсы валют</string>
+</resources>
