@@ -1,5 +1,7 @@
 package com.example.currencyconverter;
 import android.content.Context;
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -49,6 +51,7 @@ public class JSONHelper
         {
             fileOutputStream = context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
             fileOutputStream.write(jsonString.getBytes());
+            Log.d("_SUCCESS_WRITE_TO_FILE", fileOutputStream.getFD().toString());
             return true;
         }
         catch (Exception e)
@@ -83,6 +86,7 @@ public class JSONHelper
             streamReader = new InputStreamReader(fileInputStream);
             Gson gson = new Gson();
             OperationItems operationItems = gson.fromJson(streamReader, OperationItems.class);
+            Log.d("_SUCCESS_READ_FROM_FILE", String.valueOf(operationItems.getList().size()));
             return operationItems.getList();
         }
         catch (IOException ex)

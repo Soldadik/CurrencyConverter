@@ -39,8 +39,8 @@ public class Converter
         }
         else
         {
-            temp = Double.parseDouble(ET.getText().toString()) / this.V.get(S2.getSelectedItem().toString()).second * this.V.get(S2.getSelectedItem().toString()).first;
-            temp = temp * Double.parseDouble(ET.getText().toString()) * this.V.get(S1.getSelectedItem().toString()).second * this.V.get(S1.getSelectedItem().toString()).first;
+            temp = Double.parseDouble(ET.getText().toString()) * this.V.get(S1.getSelectedItem().toString()).second / this.V.get(S1.getSelectedItem().toString()).first;
+            temp = temp  / this.V.get(S2.getSelectedItem().toString()).second * this.V.get(S2.getSelectedItem().toString()).first;
         }
 
         return dFormat.format(temp);
