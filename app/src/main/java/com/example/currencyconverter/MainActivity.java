@@ -130,7 +130,6 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onFailure(Call<ExchangeRate> call, Throwable t)
                     {
-                        /*TODO ОШИБКА = D/_WARNING_: org.simpleframework.xml.core.PersistenceException: Constructor not matched for class com.example.currencyconverter.Currency */
                         //Log.d("_WARNING_", t.getCause().toString());
                         Log.d("_WARNING_RESPONSE_", t.getMessage());
                         Toast.makeText(getApplicationContext(), "Ошибка соединения", Toast.LENGTH_SHORT).show();
@@ -154,7 +153,7 @@ public class MainActivity extends AppCompatActivity
                     try
                     {
                         converter.setV(V);
-                        ET2.setText(converter.ConvertS1(SP1, SP2, ET1));
+                        ET2.setText(converter.Convert(ET1, SP1, SP2));
                     }
                     catch (Exception e)
                     {
@@ -195,6 +194,7 @@ public class MainActivity extends AppCompatActivity
             {
                 if (s.length() > 0)
                 {
+                    timer.cancel();
                     timer = new Timer();
                     timer.schedule(new TimerTask()
                     {
@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity
                     try
                     {
                         converter.setV(V);
-                        ET2.setText(converter.ConvertS2(SP1, SP2, ET1));
+                        ET2.setText(converter.Convert(ET1, SP1, SP2));
                     }
                     catch (Exception e)
                     {
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity
                     try
                     {
                         converter.setV(V);
-                        ET2.setText(converter.ConvertS1(SP1, SP2, ET1));
+                        ET2.setText(converter.Convert(ET1, SP1, SP2));
                     }
                     catch (Exception e)
                     {
@@ -269,16 +269,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
         });
-    }
-
-    @Override
-    protected void onResume()
-    {
-        super.onResume();
-        final EditText e1 = findViewById(R.id.editText_1);
-        final EditText e2 = findViewById(R.id.editText_2);
-        final Spinner s1 = findViewById(R.id.CurrencySpinner_1);
-        final Spinner s2 = findViewById(R.id.CurrencySpinner_2);
     }
 
     @Override
@@ -300,13 +290,8 @@ public class MainActivity extends AppCompatActivity
     public void onBackPressed()
     {
         this.finishAffinity();
-        return;
     }
 
-    /*TODO
-        Вызывается при ИМПОРТЕ из истории
-        Хотя хз, является ли это проблемой, ведь я из историю прос
-     */
     private Runnable input_finish_checker = new Runnable()
     {
         @Override

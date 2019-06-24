@@ -56,7 +56,6 @@ public class HistoryActivity extends AppCompatActivity
         }
 
         linearLayoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL, true);
-
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new CustomAdapter(this, operationList);
         recyclerView.setAdapter(adapter);
@@ -95,6 +94,5 @@ public class HistoryActivity extends AppCompatActivity
     public void onBackPressed()
     {
         finish();
-        return;
     }
 }

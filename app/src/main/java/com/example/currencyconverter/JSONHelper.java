@@ -29,11 +29,10 @@ public class JSONHelper
 
     static void checkHistoryFile(Context context) throws IOException
     {
-        File file = new File(FILE_NAME);
+        File file = context.getFileStreamPath(FILE_NAME);
         if(!file.exists())
         {
-            file.createNewFile();
-            //FileOutputStream fos = new FileOutputStream(new File(context.getFilesDir(), FILE_NAME));
+            file = new File(context.getFilesDir(), FILE_NAME);
         }
     }
 
